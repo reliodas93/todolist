@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="email" alignment="CENTER" prefHeight="337.0" prefWidth="227.0" spacing="20.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="appli.accueil.InscriptionController">
+<VBox alignment="CENTER" prefHeight="337.0" prefWidth="227.0" spacing="20.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="appli.accueil.InscriptionController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
@@ -22,7 +22,7 @@
          <Font size="14.0" />
       </font>
    </Label>
-   <TextField />
+   <TextField fx:id="email" />
 
     <Label fx:id="welcomeText" prefHeight="17.0" prefWidth="19.0" />
    <Label text="mot_de_passe">
