@@ -11,6 +11,6 @@ module appli.todolistfx {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
 
-    opens appli to javafx.fxml;
+    opens appli.accueil to javafx.fxml;
     exports appli;
 }

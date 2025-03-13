@@ -1,49 +1,66 @@
 package appli.accueil;
 
+import appli.StartApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Button;
+
+import java.io.IOException;
+
 
 public class LoginController {
 
+    @FXML
+    private Button bountonInscription;
 
     @FXML
+    private Button boutonMdpOubliée;
 
+    @FXML
+    private Button boutonconnexion;
+
+    @FXML
     private TextField email;
 
+    @FXML
+    private Label labelErreur; // C'est cette variable qui doit être utilisée pour afficher les erreurs
 
     @FXML
     private PasswordField mdp;
 
     @FXML
     private Label welcomeText;
-    private Label errorMessage;
+
     @FXML
-    void Login(ActionEvent event) {
+    void Login(ActionEvent event) { // Ajout du @FXML pour lier avec FXML
         String emailInput = email.getText();
         String password = mdp.getText();
 
-        System.out.println("Email: " + email);
+        System.out.println("Email: " + emailInput); // Correction ici
         System.out.println("Mot de passe: " + password);
 
         if (emailInput.equals("email@example.com") && password.equals("Azerty1234")) {
             System.out.println("Connexion réussie !");
-            errorMessage.setText("Connexion réussie !");
+            labelErreur.setText("Connexion réussie !");
+            labelErreur.setStyle("-fx-text-fill: green;"); // Texte en vert pour le succès
         } else {
             System.out.println("Identifiants incorrects.");
-            errorMessage.setText("Identifiants incorrects.");
+            labelErreur.setText("Identifiants incorrects.");
+            labelErreur.setStyle("-fx-text-fill: red;"); // Texte en rouge pour l'erreur
         }
     }
-    @FXML
-    void goToInscription(ActionEvent event) {
 
+    @FXML
+    void retourInscription(ActionEvent event) {
+        try {
+            StartApplication.changeScene("accueil/inscriptionView");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
 
     }
-
-
-
-
 }
