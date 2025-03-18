@@ -26,7 +26,7 @@ public class LoginController {
     private TextField email;
 
     @FXML
-    private Label labelErreur; // C'est cette variable qui doit être utilisée pour afficher les erreurs
+    private Label labelErreur;
 
     @FXML
     private PasswordField mdp;
@@ -35,21 +35,21 @@ public class LoginController {
     private Label welcomeText;
 
     @FXML
-    void Login(ActionEvent event) { // Ajout du @FXML pour lier avec FXML
+    void Login(ActionEvent event) {
         String emailInput = email.getText();
         String password = mdp.getText();
 
-        System.out.println("Email: " + emailInput); // Correction ici
+        System.out.println("Email: " + emailInput);
         System.out.println("Mot de passe: " + password);
 
         if (emailInput.equals("email@example.com") && password.equals("Azerty1234")) {
             System.out.println("Connexion réussie !");
             labelErreur.setText("Connexion réussie !");
-            labelErreur.setStyle("-fx-text-fill: green;"); // Texte en vert pour le succès
+            labelErreur.setStyle("-fx-text-fill: green;");
         } else {
             System.out.println("Identifiants incorrects.");
             labelErreur.setText("Identifiants incorrects.");
-            labelErreur.setStyle("-fx-text-fill: red;"); // Texte en rouge pour l'erreur
+            labelErreur.setStyle("-fx-text-fill: red;");
         }
     }
 

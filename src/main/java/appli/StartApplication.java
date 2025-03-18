@@ -23,7 +23,7 @@ private static Stage mainStage;
 
     public static void changeScene(String LoginViewfxml ) throws IOException {
         FXMLLoader fxmlLoader = new
-                FXMLLoader(StartApplication.class.getResource((LoginViewfxml  + "View.fxml")));
+                FXMLLoader(StartApplication.class.getResource(LoginViewfxml + "View.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         mainStage.setScene(scene);
     }
