@@ -8,7 +8,10 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="471.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appli.accueil.InscriptionController">
+<AnchorPane prefHeight="471.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="appli.accueil.InscriptionController">
    <children>
       <Label layoutX="249.0" layoutY="24.0" text="Inscription">
          <font>
