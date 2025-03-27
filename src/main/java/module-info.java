@@ -12,6 +12,7 @@ module appli.todolistfx {
     requires com.almasb.fxgl.all;
     requires java.sql;
     requires java.desktop;
+    requires spring.security.crypto;
 
     opens appli.accueil to javafx.fxml;
     exports appli;

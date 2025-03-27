@@ -36,8 +36,8 @@
          <Font size="14.0" />
       </font>
    </Label>
-    <Button fx:id="boutonconnexion" onAction="#Login" text="connexion" />
-   <Button fx:id="boutonMdpOubliée" mnemonicParsing="false" text="mot de passe oublié" />
-   <Button fx:id="bountonInscription" mnemonicParsing="false" onAction="#retourInscription" text="inscription" />
+    <Button fx:id="boutonConnexion" onAction="#login" text="connexion" />
+   <Button fx:id="boutonMdpOubliee" mnemonicParsing="false" text="mot de passe oublié" />
+   <Button fx:id="boutonInscription" mnemonicParsing="false" onAction="#retourInscription" text="inscription" />
 
 </VBox>

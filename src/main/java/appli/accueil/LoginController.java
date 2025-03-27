@@ -1,4 +1,5 @@
 package appli.accueil;
+
 import repository.UtilisateurRepository;
 import model.Utilisateur;
 import appli.StartApplication;
@@ -9,23 +10,20 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
 
-import javax.swing.*;
 import java.io.IOException;
 import java.sql.SQLException;
-
 
 public class LoginController {
     private UtilisateurRepository utilisateurRepository = new UtilisateurRepository();
 
+    @FXML
+    private Button boutonInscription;
 
     @FXML
-    private Button bountonInscription;
+    private Button boutonMdpOubliee;
 
     @FXML
-    private Button boutonMdpOubliée;
-
-    @FXML
-    private Button boutonconnexion;
+    private Button boutonConnexion;
 
     @FXML
     private TextField email;
@@ -37,53 +35,60 @@ public class LoginController {
     private PasswordField mdp;
 
     @FXML
-    private Label welcomeText;
-    UtilisateurRepository repository = new UtilisateurRepository();
-    @FXML
+    void login(ActionEvent event) throws SQLException {
+        String emailInput = email.getText().trim();
+        String passwordInput = mdp.getText().trim();
 
-    void Login(ActionEvent event) throws SQLException {
-        String emailInput = email.getText();
-        String password = mdp.getText();
-       if (emailInput.isEmpty() || password.isEmpty()) {
-           System.out.println("Veullez entrer votre identifiants");
-           labelErreur.setText("Veuillez entrer votre identifiants");
-           labelErreur.setStyle("-fx-text-fill: red;");
-           return;
-       }
-
-Utilisateur utilisateur=repository.getUtilisateurParEmail(email.getText());
-Utilisateur utilisateur1= repository.getUtilisateurParEmail(mdp.getText());
-
-if (utilisateur.getMdp() .equals( mdp.getText())){
-    System.out.println("Veuillez entrer votre identifiants");
-
+        // Vérification des champs vides
+        if (emailInput.isEmpty() || passwordInput.isEmpty()) {
+            labelErreur.setText("Veuillez entrer vos identifiants.");
+            labelErreur.setStyle("-fx-text-fill: red;");
+            return;
         }
 
-        System.out.println("Email: " + emailInput);
-        System.out.println("Mot de passe: " + password);
+        // Récupération de l'utilisateur
+        Utilisateur utilisateur = utilisateurRepository.getUtilisateurParEmail(emailInput);
 
-        if (emailInput.equals("r@r.r") && password.equals("Test1234")) {
-            System.out.println("Connexion réussie !");
-            labelErreur.setText("Connexion réussie !");
-            labelErreur.setStyle("-fx-text-fill: blue;");
-        } else {
-            System.out.println("Identifiants incorrects.");
-            labelErreur.setText("Identifiants incorrects.");
-            labelErreur.setStyle("-fx-text-fill: black;");
+        // Vérification de l'existence de l'utilisateur et du mot de passe
+        if (utilisateur == null) {
+            labelErreur.setText("Aucun compte associé à cet email.");
+            labelErreur.setStyle("-fx-text-fill: red;");
+            return;
         }
-    }
-    @FXML
-    void btnMdpOublie(ActionEvent event) {
 
+        if (!utilisateur.getMdp().equals(passwordInput)) {
+            labelErreur.setText("Mot de passe incorrect.");
+            labelErreur.setStyle("-fx-text-fill: red;");
+            return;
+        }
+
+        // Connexion réussie
+        labelErreur.setText("Connexion réussie !");
+        labelErreur.setStyle("-fx-text-fill: blue;");
+
+        // Redirection vers la page d'accueil
+        try {
+            StartApplication.changeScene("accueilView");
+        } catch (IOException e) {
+            e.printStackTrace();
+            labelErreur.setText("Erreur de chargement de la page d'accueil.");
+            labelErreur.setStyle("-fx-text-fill: red;");
+        }
     }
 
     @FXML
     void retourInscription(ActionEvent event) {
         try {
-            StartApplication.changeScene("Inscription");
+            StartApplication.changeScene("Inscription"); // Assure-toi que ton fichier s'appelle bien Inscription.fxml
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
+            labelErreur.setText("Erreur de chargement de la page d'inscription.");
+            labelErreur.setStyle("-fx-text-fill: red;");
         }
+    }
+
+    @FXML
+    void boutonMdpOubliee(ActionEvent event) {
     }
 }
 
