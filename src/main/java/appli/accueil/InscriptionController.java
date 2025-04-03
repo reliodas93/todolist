@@ -45,6 +45,7 @@ public class InscriptionController {
         String password = mdp.getText();
         String passwordConfirm = confirmationmdp.getText();
 
+
         // 2. Vérifier que tous les champs sont remplis
         if (nom.isEmpty() || prenom.isEmpty() || emailInput.isEmpty() || password.isEmpty() || passwordConfirm.isEmpty()) {
             labelErreur.setText("Veuillez remplir tous les champs.");

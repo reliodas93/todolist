@@ -11,7 +11,7 @@ public class UtilisateurRepository {
         this.connection = Database.getConnexion();
     }
 
-    public void ajouterUtilisateur(Utilisateur utilisateur) {
+    public boolean ajouterUtilisateur(Utilisateur utilisateur) {
         String sql = "INSERT INTO utilisateurs (nom, prenom, email, mdp, role) VALUES (?, ?, ?, ?, ?)";
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
@@ -21,9 +21,12 @@ public class UtilisateurRepository {
             stmt.setString(4, utilisateur.getMdp());
             stmt.setString(5, utilisateur.getRole());
             stmt.executeUpdate();
+
             System.out.println("Utilisateur ajouté avec succès !");
+            return true ;
         } catch (SQLException e) {
             System.out.println("Erreur lors de l'ajout de l'utilisateur : " + e.getMessage());
+        return false ;
         }
     }
 

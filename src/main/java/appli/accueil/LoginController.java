@@ -9,9 +9,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
-
+import session.SessionUtilisateur;
 import java.io.IOException;
 import java.sql.SQLException;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 
 public class LoginController {
     private UtilisateurRepository utilisateurRepository = new UtilisateurRepository();
@@ -49,26 +50,31 @@ public class LoginController {
         // Récupération de l'utilisateur
         Utilisateur utilisateur = utilisateurRepository.getUtilisateurParEmail(emailInput);
 
-        // Vérification de l'existence de l'utilisateur et du mot de passe
+        // Vérification de l'existence de l'utilisateur
         if (utilisateur == null) {
             labelErreur.setText("Aucun compte associé à cet email.");
             labelErreur.setStyle("-fx-text-fill: red;");
             return;
         }
 
-        if (!utilisateur.getMdp().equals(passwordInput)) {
+        // Vérification du mot de passe encodé
+        if (!BCrypt.checkpw(passwordInput, utilisateur.getMdp())) {
             labelErreur.setText("Mot de passe incorrect.");
             labelErreur.setStyle("-fx-text-fill: red;");
             return;
         }
 
         // Connexion réussie
+        System.out.println("Connexion réussie pour : " + utilisateur.getNom());
         labelErreur.setText("Connexion réussie !");
         labelErreur.setStyle("-fx-text-fill: blue;");
 
+        // Sauvegarde de la session utilisateur
+        SessionUtilisateur.getInstance().sauvegardeSession(utilisateur);
+
         // Redirection vers la page d'accueil
         try {
-            StartApplication.changeScene("accueilView");
+            StartApplication.changeScene("accueil");
         } catch (IOException e) {
             e.printStackTrace();
             labelErreur.setText("Erreur de chargement de la page d'accueil.");
@@ -79,7 +85,7 @@ public class LoginController {
     @FXML
     void retourInscription(ActionEvent event) {
         try {
-            StartApplication.changeScene("Inscription"); // Assure-toi que ton fichier s'appelle bien Inscription.fxml
+            StartApplication.changeScene("Inscription");
         } catch (IOException e) {
             e.printStackTrace();
             labelErreur.setText("Erreur de chargement de la page d'inscription.");
@@ -89,6 +95,6 @@ public class LoginController {
 
     @FXML
     void boutonMdpOubliee(ActionEvent event) {
+        // À implémenter plus tard
     }
 }
-
