@@ -47,7 +47,7 @@ public class LoginController {
             return;
         }
 
-        // Récupération de l'utilisateur
+        // Récupération de l'utilisateur par email
         Utilisateur utilisateur = utilisateurRepository.getUtilisateurParEmail(emailInput);
 
         // Vérification de l'existence de l'utilisateur
@@ -72,26 +72,26 @@ public class LoginController {
         // Sauvegarde de la session utilisateur
         SessionUtilisateur.getInstance().sauvegardeSession(utilisateur);
 
-        // Redirection vers la page d'accueil
+        // Redirection vers la page d'accueil après connexion réussie
         try {
-            StartApplication.changeScene("accueil");
+            StartApplication.changeScene("PageAccueil"); // Page d'accueil après connexion
         } catch (IOException e) {
             e.printStackTrace();
             labelErreur.setText("Erreur de chargement de la page d'accueil.");
             labelErreur.setStyle("-fx-text-fill: red;");
         }
     }
+
     @FXML
     void retourInscription(ActionEvent event) {
         try {
-            StartApplication.changeScene("Inscription");
+            StartApplication.changeScene("Inscription"); // Redirection vers la page d'inscription
         } catch (IOException e) {
             e.printStackTrace();
             labelErreur.setText("Erreur de chargement de la page d'inscription.");
             labelErreur.setStyle("-fx-text-fill: red;");
         }
     }
-
 
     @FXML
     void boutonMdpOubliee(ActionEvent event) {

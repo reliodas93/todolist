@@ -2,7 +2,7 @@ package model;
 
 public class Utilisateur {
 
-    private int id;
+    private int idUtilisateur;
     private String nom;
     private String prenom;
     private String email;
@@ -11,7 +11,7 @@ public class Utilisateur {
 
 
     public Utilisateur(int id, String nom, String prenom, String email, String motDePasse) {
-        this.id = id;
+        this.idUtilisateur = id;
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
@@ -34,12 +34,12 @@ public class Utilisateur {
     }
 
 
-    public int getId() {
-        return id;
+    public int getIdUtilisateur() {
+        return idUtilisateur;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int idutilisateur) {
+        this.idUtilisateur = idUtilisateur;
     }
 
     public String getNom() {
@@ -86,7 +86,7 @@ public class Utilisateur {
     @Override
     public String toString() {
         return "Utilisateur{" +
-                "id=" + id +
+                "id=" + idUtilisateur +
                 ", nom='" + nom + '\'' +
                 ", prenom='" + prenom + '\'' +
                 ", email='" + email + '\'' +

@@ -12,14 +12,14 @@ public class UtilisateurRepository {
     }
 
     public boolean ajouterUtilisateur(Utilisateur utilisateur) {
-        String sql = "INSERT INTO utilisateurs (nom, prenom, email, mdp, role) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO utilisateur (nom, prenom, email, mot_de_passe) VALUES (?, ?, ?, ?)";
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, utilisateur.getNom());
             stmt.setString(2, utilisateur.getPrenom());
             stmt.setString(3, utilisateur.getEmail());
             stmt.setString(4, utilisateur.getMdp());
-            stmt.setString(5, utilisateur.getRole());
+
             stmt.executeUpdate();
 
             System.out.println("Utilisateur ajouté avec succès !");
@@ -47,7 +47,7 @@ public class UtilisateurRepository {
             if (rs.next()) {
 
                 utilisateur = new Utilisateur(
-                     idSQL= rs.getInt("id"),
+                     idSQL= rs.getInt("id_utilisateur"),
                        nomSQL= rs.getString("nom"),
                        prenomSQL= rs.getString("prenom"),
                        emailSQL= rs.getString("email"),

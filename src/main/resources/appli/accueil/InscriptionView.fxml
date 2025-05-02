@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="471.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appli.accueil.InscriptionController">
+<AnchorPane prefHeight="532.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appli.accueil.InscriptionController">
    <children>
       <Label layoutX="249.0" layoutY="24.0" text="Inscription">
          <font>
@@ -19,12 +19,13 @@
       <Label layoutX="279.0" layoutY="191.0" text="email" />
       <Label layoutX="264.0" layoutY="251.0" text="mot de passe" />
       <Label layoutX="266.0" layoutY="309.0" text="confirmation" />
-      <TextField fx:id="nom" layoutX="218.0" layoutY="82.0" />
-      <TextField fx:id="prenom" layoutX="217.0" layoutY="152.0" />
+      <TextField fx:id="Nom" layoutX="218.0" layoutY="82.0" />
+      <TextField fx:id="Prenom" layoutX="217.0" layoutY="152.0" />
       <TextField fx:id="email" layoutX="218.0" layoutY="215.0" />
       <PasswordField fx:id="mdp" layoutX="222.0" layoutY="275.0" />
       <PasswordField fx:id="confirmationmdp" layoutX="222.0" layoutY="336.0" />
-      <Button fx:id="boutonInscription" layoutX="264.0" layoutY="377.0" mnemonicParsing="false" onAction="#versLogin" text="Inscription" />
-      <Button layoutX="271.0" layoutY="421.0" mnemonicParsing="false" text="Retour" />
+      <Button fx:id="boutonInscription" layoutX="256.0" layoutY="404.0" mnemonicParsing="false" onAction="#versLogin" text="Inscription" />
+      <Button layoutX="266.0" layoutY="463.0" mnemonicParsing="false" text="Retour" />
+      <Label fx:id="labelErreur" layoutX="247.0" layoutY="369.0" text=" label pour erreur" textFill="#e20000" />
    </children>
 </AnchorPane>
