@@ -37,7 +37,7 @@ public class InscriptionController {
     private Label labelErreur;
 
     @FXML
-    void Inscription(ActionEvent event) {
+    void versLogin(ActionEvent event) {
         // 1. Récupérer les valeurs entrées par l'utilisateur
         String nom = Nom.getText().trim();
         String prenom = Prenom.getText().trim();
@@ -97,14 +97,5 @@ public class InscriptionController {
         }
     }
 
-    @FXML
-    void versLogin(ActionEvent event) {
-        try {
-            StartApplication.changeScene("Login"); // Redirige vers la page de connexion
-        } catch (IOException e) {
-            e.printStackTrace();
-            labelErreur.setText("Erreur de chargement de la page de connexion.");
-            labelErreur.setStyle("-fx-text-fill: red;");
-        }
-    }
+
 }

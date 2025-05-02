@@ -81,7 +81,6 @@ public class LoginController {
             labelErreur.setStyle("-fx-text-fill: red;");
         }
     }
-
     @FXML
     void retourInscription(ActionEvent event) {
         try {
@@ -92,6 +91,7 @@ public class LoginController {
             labelErreur.setStyle("-fx-text-fill: red;");
         }
     }
+
 
     @FXML
     void boutonMdpOubliee(ActionEvent event) {
