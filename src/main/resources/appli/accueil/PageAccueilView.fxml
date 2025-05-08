@@ -1,24 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
+<AnchorPane prefHeight="532.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appli.accueil.AccueilController">
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+
    <children>
-      <AnchorPane prefHeight="400.0" prefWidth="606.0">
+
+      <AnchorPane layoutX="4.0" prefHeight="400.0" prefWidth="606.0">
          <children>
             <Label layoutX="241.0" layoutY="23.0" text="todolist">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
+            <VBox layoutX="376.0" layoutY="100.0" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="ajoutTacheButton" mnemonicParsing="false" onAction="#ajouterUneTache" text="Button">
+                           <effect>
+                              <Shadow>
+                                 <color>
+                                    <Color red="0.5247942209243774" green="1.0" blue="0.08024691045284271" />
+                                 </color>
+                              </Shadow>
+                           </effect></Button>
+                        <TextField fx:id="tacheASaisir" />
+                        <Button fx:id="modifierTacheButton" mnemonicParsing="false" onAction="#modifierUneTache" text="Button">
+                           <effect>
+                              <Shadow>
+                                 <color>
+                                    <Color green="0.6166666746139526" blue="1.0" />
+                                 </color>
+                              </Shadow>
+                           </effect>
+                        </Button>
+                        <Button fx:id="supprimeTacheButton" mnemonicParsing="false" onAction="#supprimerUneTache" text="Button">
+                           <effect>
+                              <Shadow>
+                                 <color>
+                                    <Color red="1.0" />
+                                 </color>
+                              </Shadow>
+                           </effect></Button>
+                     </children>
+                  </HBox>
+                  <ListView fx:id="listeTache" prefHeight="200.0" prefWidth="200.0" />
+               </children>
+            </VBox>
          </children>
          <effect>
             <Bloom />
          </effect>
       </AnchorPane>
+      <VBox prefHeight="200.0" prefWidth="100.0" />
    </children>
 </AnchorPane>
