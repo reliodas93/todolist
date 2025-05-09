@@ -29,6 +29,6 @@ public class StartApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(StartApplication.class.getResource("/appli/accueil/" + nomDuFichierFxml + "View.fxml"));
         Scene newScene = new Scene(fxmlLoader.load());
         mainStage.setScene(newScene);
-        mainStage.show(); // S'assure que la fenêtre est bien affichée
+        mainStage.show();
     }
 }

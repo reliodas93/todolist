@@ -1,10 +1,13 @@
 package appli.accueil;
 
+import appli.StartApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+
+import java.io.IOException;
 
 public class AccueilController {
 
@@ -21,9 +24,36 @@ public class AccueilController {
     private Button modifierTacheButton;
 
     @FXML
+    private Button buttonUtilisateur;
+
+    @FXML
     private TextField tacheASaisir;
 
     private int indexTacheSelectionnee = -1;
+
+
+    public void initialize() {
+
+        supprimeTacheButton.setDisable(true);
+        modifierTacheButton.setDisable(true);
+
+
+        listeTache.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
+            boolean hasSelection = newVal != null;
+            supprimeTacheButton.setDisable(!hasSelection);
+            modifierTacheButton.setDisable(!hasSelection);
+
+            if (hasSelection) {
+                tacheASaisir.setText(newVal);
+                indexTacheSelectionnee = listeTache.getSelectionModel().getSelectedIndex();
+            } else {
+                tacheASaisir.clear();
+                indexTacheSelectionnee = -1;
+            }
+        });
+
+
+    }
 
     @FXML
     private void ajouterUneTache(ActionEvent event) {
@@ -43,7 +73,7 @@ public class AccueilController {
     }
 
 
-     @FXML
+    @FXML
     private void modifierUneTache(ActionEvent event) {
         String nouvelleTache = tacheASaisir.getText();
         if (indexTacheSelectionnee >= 0 && nouvelleTache != null && !nouvelleTache.isEmpty()) {
@@ -53,4 +83,16 @@ public class AccueilController {
             indexTacheSelectionnee = -1;
         }
     }
+
+    @FXML
+    void versGestionUtilisateur(ActionEvent event) {
+        try {
+            StartApplication.changeScene("GestionUser");
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        }
+    }
+
+    
 }

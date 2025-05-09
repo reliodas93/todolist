@@ -1,21 +1,45 @@
 package appli.accueil;
 
-
+import appli.StartApplication;
+import  javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
-import model.Utilisateur;
 
-import java.net.URL;
-import java.util.ResourceBundle;
+import java.io.IOException;
 
-public class GestionUserController implements Initializable {
+public class GestionUserController {
+
         @FXML
-        private TableView<Utilisateur> tableauUser;
-        @Override
-        public void initialize(URL location, ResourceBundle resources) {
-            // Code d'initialisation exécuté automatiquement au chargement de la vue
+        private Button buttonDeco;
+
+        @FXML
+        private TableView<?> tableauUser;
+
+        @FXML
+        private Button buttonRetour;
+
+        @FXML
+        void versConnexion(ActionEvent event) {
+                try {
+                        StartApplication.changeScene("Login"); // Redirection vers la page d'inscription
+                } catch (IOException e) {
+                        e.printStackTrace();
+
+                }
         }
-    }
 
 
+        @FXML
+        void versTache(ActionEvent event) {
+                try {
+                        StartApplication.changeScene("PageAccueil"); // Redirection vers la page d'inscription
+                } catch (IOException e) {
+                        e.printStackTrace();
+
+                }
+
+        }
+
+
+}

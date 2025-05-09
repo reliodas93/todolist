@@ -17,14 +17,14 @@
 
    <children>
 
-      <AnchorPane layoutX="4.0" prefHeight="400.0" prefWidth="606.0">
+      <AnchorPane layoutX="1.0" prefHeight="507.0" prefWidth="606.0">
          <children>
             <Label layoutX="241.0" layoutY="23.0" text="todolist">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <VBox layoutX="376.0" layoutY="100.0" prefHeight="200.0" prefWidth="100.0">
+            <VBox layoutX="199.0" layoutY="102.0" prefHeight="329.0" prefWidth="196.0">
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
@@ -56,14 +56,18 @@
                            </effect></Button>
                      </children>
                   </HBox>
-                  <ListView fx:id="listeTache" prefHeight="200.0" prefWidth="200.0" />
+                  <ListView fx:id="listeTache" prefHeight="163.0" prefWidth="147.0" />
                </children>
             </VBox>
+            <Label layoutX="199.0" layoutY="70.0" text="ajout" />
+            <Label layoutX="369.0" layoutY="70.0" text="supp" />
+            <Label layoutX="267.0" layoutY="70.0" text="tache" />
          </children>
          <effect>
             <Bloom />
          </effect>
       </AnchorPane>
       <VBox prefHeight="200.0" prefWidth="100.0" />
+      <Button fx:id="buttonUtilisateur" layoutX="524.0" layoutY="506.0" mnemonicParsing="false" onAction="#versGestionUtilisateur" text="gestion utilisateur" />
    </children>
 </AnchorPane>

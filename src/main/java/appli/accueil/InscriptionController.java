@@ -73,7 +73,7 @@ public class InscriptionController {
             return;
         }
 
-        // 5. Hachage sécurisé du mot de passe
+
         String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
 
         // 6. Création de l'utilisateur

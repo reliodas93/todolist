@@ -49,7 +49,7 @@
                   <Font size="32.0" />
                </font>
             </Text>
-            <Button layoutX="574.0" layoutY="16.0" mnemonicParsing="false" text="deconnexion" />
+            <Button fx:id="buttonDeco" layoutX="574.0" layoutY="16.0" mnemonicParsing="false" onAction="#versConnexion" text="deconnexion" />
          </children>
       </AnchorPane>
       <TableView fx:id="tableauUser" prefHeight="555.0" prefWidth="691.0" />
